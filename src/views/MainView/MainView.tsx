@@ -28,10 +28,10 @@ export const MainView: FC = () => {
   return (
     <Container className='pt-3 pb-3'>
       <h3 className='mb-4'>Enter the pack ID you want to check</h3>
-      <SearchPackForm atomicApi={atomicApi} useRpc={useRpc} />
-      {useRpc.packRolls.map((item, index) => (
-        <details key={index}>
-          <summary>Slot: {index}</summary>
+      <SearchPackForm useRpc={useRpc} />
+      {useRpc.packRolls.map(item => (
+        <details key={item.roll_id}>
+          <summary>Slot: {item.roll_id}</summary>
           <TemplatesList packRolls={item} atomicApi={atomicApi} />
         </details>
       ))}

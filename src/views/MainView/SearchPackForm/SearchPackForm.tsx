@@ -2,20 +2,15 @@ import React, {ChangeEvent, FC, SyntheticEvent, useState} from "react";
 import {Alert, Button, Col, Form, FormControl, Row} from "react-bootstrap";
 
 import {JsonRpcsHook} from "../../../hooks/useJsonRpc";
-import {AtomicApiHook} from "../../../hooks/useAtomicApi";
 
 type SearchPackFormProps = {
   /**
    * Hook for managing rpc functionality
    */
   useRpc: JsonRpcsHook
-  /**
-   * Hook for managing atomic API functionality
-   */
-  atomicApi: AtomicApiHook
 }
 
-export const SearchPackForm: FC<SearchPackFormProps> = ({ useRpc, atomicApi }) => {
+export const SearchPackForm: FC<SearchPackFormProps> = ({ useRpc }) => {
   const [value, setValue] = useState('')
 
   const find = (e: SyntheticEvent) => {
@@ -28,9 +23,6 @@ export const SearchPackForm: FC<SearchPackFormProps> = ({ useRpc, atomicApi }) =
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (useRpc.packRolls.length > 0) {
       useRpc.resetPackRolls()
-    }
-    if (atomicApi.templates.length > 0) {
-      atomicApi.resetTemplates()
     }
     if (error) {
       useRpc.resetError()
