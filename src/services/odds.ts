@@ -2,7 +2,7 @@ import Decimal from "decimal.js";
 
 import {AtomicTemplate} from "../types/atomicApiTypes";
 import {PackRolls} from "../hooks/useJsonRpc";
-import {rarities, Rarities} from "../views/MainView/MainView";
+import {Rarities} from "../views/MainView/MainView";
 
 /**
  * Returns the odd for one template from the list outcome NFTs for a pack

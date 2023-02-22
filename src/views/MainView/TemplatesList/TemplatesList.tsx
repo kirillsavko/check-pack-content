@@ -38,9 +38,11 @@ export const TemplatesList: FC<TemplatesListProps> = ({
   useEffect(() => {
     const ids = packRolls.outcomes.map(item => item.template_id)
 
-    atomicApi.getTemplatesByIds(ids)
-      .then(setTemplates)
-  }, [packRolls])
+    if (ids.length > 0) {
+      atomicApi.getTemplatesByIds(ids)
+        .then(setTemplates)
+    }
+  }, [atomicApi, packRolls])
 
   return <>
     <div className="templates mb-5">
