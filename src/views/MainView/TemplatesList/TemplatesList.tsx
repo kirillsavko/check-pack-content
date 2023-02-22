@@ -42,7 +42,7 @@ export const TemplatesList: FC<TemplatesListProps> = ({
       atomicApi.getTemplatesByIds(ids)
         .then(setTemplates)
     }
-  }, [atomicApi, packRolls])
+  }, [packRolls])
 
   return <>
     <div className="templates mb-5">
