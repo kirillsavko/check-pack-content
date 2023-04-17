@@ -27,7 +27,7 @@ export const MainView: FC = () => {
 
   return (
     <Container className='pt-3 pb-3'>
-      <h3 className='mb-4'>Enter the pack ID you want to check</h3>
+      <h3 className='mb-4'>Enter the template ID you want to check</h3>
       <SearchPackForm useRpc={useRpc} />
       {useRpc.packRolls.map(item => (
         <details key={item.roll_id}>

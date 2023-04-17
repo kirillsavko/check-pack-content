@@ -21,6 +21,7 @@ export function useJsonRpc () {
   const getTableRows = (
     code: string, table: string, scope: string,
     limit: number, lowerBound?: string, upperBound?: string,
+    indexPosition = 1
   ) => {
     return rpc.get_table_rows({
       code: code,
@@ -29,17 +30,23 @@ export function useJsonRpc () {
       lower_bound: lowerBound,
       upper_bound: upperBound,
       json: true,
-      limit: limit
+      limit: limit,
+      index_position: indexPosition,
+      key_type: 'i64',
     })
   }
 
-  const getPackRolls = (packId: string) => {
+  const getPackRolls = async (templateId: string) => {
     setPackRolls([])
     setGettingPackRolls(true)
-    return getTableRows('atomicpacksx', 'packrolls', packId, 1000)
-      .then(res => setPackRolls(res.rows))
-      .catch(e => setGettingPackRollsError(e.message))
-      .finally(() => setGettingPackRolls(false))
+    const result = await getTableRows('atomicpacksx', 'packs', 'atomicpacksx', 1000, templateId, templateId, 2)
+    if (result.rows[0].pack_id) {
+      return getTableRows('atomicpacksx', 'packrolls', result.rows[0].pack_id, 1000)
+        .then(res => setPackRolls(res.rows))
+        .catch(e => setGettingPackRollsError(e.message))
+        .finally(() => setGettingPackRolls(false))
+    }
+    return []
   }
 
   return {
