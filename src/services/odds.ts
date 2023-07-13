@@ -25,7 +25,7 @@ export const getOddForOneTemplate = (template: AtomicTemplate, packRolls: PackRo
  * @param value Value should be checked
  */
 const isRarity = (value: string): value is Rarities => {
-  return value in { Common: true, Rare: true, Epic: true, Legendary: true, Mythic: true }
+  return value in { Common: true, Rare: true, Epic: true, Legendary: true, Mythic: true, Starter: true }
 }
 
 /**
@@ -40,6 +40,7 @@ const result: Record<Rarities, Decimal> = {
     Epic: new Decimal('0'),
     Legendary: new Decimal('0'),
     Mythic: new Decimal('0'),
+    Starter: new Decimal('0'),
   }
 
   templates.forEach(template => {
@@ -55,5 +56,6 @@ const result: Record<Rarities, Decimal> = {
     Epic: result.Epic.toNumber(),
     Legendary: result.Legendary.toNumber(),
     Mythic: result.Mythic.toNumber(),
+    Starter: result.Starter.toNumber(),
   }
 }

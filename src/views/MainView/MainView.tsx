@@ -9,7 +9,7 @@ import {TemplatesList} from "./TemplatesList/TemplatesList";
 
 import './MainView.scss'
 
-export type Rarities = 'Common' | 'Rare' | 'Epic' | 'Legendary' | 'Mythic'
+export type Rarities = 'Common' | 'Rare' | 'Epic' | 'Legendary' | 'Mythic' | 'Starter'
 /**
  * Object for using an iteration by the {@link Rarities}
  */
@@ -19,6 +19,7 @@ export const rarities: Record<Rarities, Rarities> = {
   'Epic': 'Epic',
   'Legendary': 'Legendary',
   'Mythic': 'Mythic',
+  'Starter': 'Starter',
 }
 
 export const MainView: FC = () => {
