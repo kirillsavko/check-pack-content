@@ -1,0 +1,11 @@
+.search-pack-content-form {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  &__input {
+    min-width: 200px;
+  }
+}

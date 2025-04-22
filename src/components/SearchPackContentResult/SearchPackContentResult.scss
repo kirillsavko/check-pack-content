@@ -1,0 +1,28 @@
+.search-pack-content-result {
+  overflow-y: auto;
+  margin-bottom: 15px;
+  flex: 1;
+
+  &__card {
+    @media only screen and (max-width: 600px) {
+      flex-basis: 100%;
+    }
+
+    flex-basis: calc(50% - 5px);
+
+    .ant-card-body {
+      display: flex;
+      gap: 10px;
+      padding: 15px;
+
+      @media only screen and (max-width: 400px) {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    &-text {
+      flex: 1;
+    }
+  }
+}
